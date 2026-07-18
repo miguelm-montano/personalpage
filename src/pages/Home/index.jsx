@@ -1,3 +1,5 @@
+import GridBackground from '../../components/GridBackground'
+
 const STATS = [
   { value: "7+", label: "Lorem ipsum test text" },
   { value: "6+", label: "Lorem ipsum test text" },
@@ -25,39 +27,45 @@ function StatItem({ value, label }) {
   );
 }
 
+
 export default function Home() {
   return (
-    <div className="h-screen bg-white relative grid grid-cols-2 grid-rows-2 overflow-hidden">
-      {/* ── horizontal divider across full width ── */}
-      <div className="absolute inset-x-0 top-1/2 h-px bg-neutral-200 pointer-events-none" />
+    <div className="relative h-screen bg-white overflow-hidden">
+      <GridBackground />
 
-      {/* ── LEFT COLUMN — spans both rows, content centered ── */}
-      <div className="row-span-2 border-r border-neutral-200 flex flex-col justify-center px-42">
-        <h1 className="font-unbounded font-black text-5xl uppercase leading-tight mb-5">
-          Full Stack
-          <br />
-          Developer
-        </h1>
-        <p className="font-open-sans text-base text-neutral-600 max-w-xs leading-relaxed mb-10">
-          Hi! I'm Miguel. I'm a full-stack developer with a background in
-          industrial design, specializing in problem-solving and creative
-          solutions
-        </p>
-        <button className="font-unbounded font-bold text-sm bg-black text-white rounded-full px-8 py-4 w-fit">
-          Let's Talk!
-        </button>
-      </div>
+      {/* ── layout grid — above canvas ── */}
+      <div className="relative z-10 h-full grid grid-cols-2 grid-rows-2">
+        {/* horizontal divider */}
+        <div className="absolute inset-x-0 top-1/2 h-px bg-neutral-200 pointer-events-none" />
 
-      {/* ── TOP RIGHT — menu ── */}
-      <div className="flex items-start justify-end p-8">
-        <MenuIcon />
-      </div>
+        {/* LEFT COLUMN — spans both rows, content centered */}
+        <div className="row-span-2 border-r border-neutral-200 flex flex-col justify-center px-42">
+          <h1 className="font-unbounded font-black text-5xl uppercase leading-tight mb-5">
+            Full Stack
+            <br />
+            Developer
+          </h1>
+          <p className="font-open-sans text-base text-neutral-600 max-w-xs leading-relaxed mb-10">
+            Hi! I'm Miguel. I'm a full-stack developer with a background in
+            industrial design, specializing in problem-solving and creative
+            solutions
+          </p>
+          <button className="font-unbounded font-light text-sm bg-black text-white rounded-full px-8 py-4 w-fit">
+            Let's Talk!
+          </button>
+        </div>
 
-      {/* ── BOTTOM RIGHT — stats ── */}
-      <div className="flex flex-col items-end justify-end gap-8 px-16 pb-16">
-        {STATS.map((stat) => (
-          <StatItem key={stat.value} {...stat} />
-        ))}
+        {/* TOP RIGHT — menu */}
+        <div className="flex items-start justify-end p-8">
+          <MenuIcon />
+        </div>
+
+        {/* BOTTOM RIGHT — stats */}
+        <div className="flex flex-col items-end justify-end gap-8 px-16 pb-16">
+          {STATS.map((stat) => (
+            <StatItem key={stat.value} {...stat} />
+          ))}
+        </div>
       </div>
     </div>
   );
