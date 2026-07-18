@@ -1,15 +1,26 @@
 import { useEffect, useRef } from 'react'
 
-const CELL_SIZE = 48 // px — adjust for denser/coarser grid
-
 /**
- * Full-screen canvas overlay that fills with white pixels in a random order,
- * then calls `onComplete` once the last pixel is painted.
+ * Full-screen canvas curtain that fills with pixels and calls `onComplete`
+ * when the last pixel is painted.
  *
- * Implemented on <canvas> (not DOM divs) for smooth performance regardless
- * of viewport size.
+ * @param {function} onComplete    - Called once the curtain is fully drawn
+ * @param {number}   duration      - Total animation duration in seconds (default 0.50)
+ * @param {number}   size          - Cell size in px (default 100)
+ * @param {number}   angle         - Fill direction in degrees, 0° = right, 90° = down (default 90)
+ * @param {number}   noise         - 0 = fully directional, 1 = fully random (default 0.40)
+ * @param {string}   directionMode - 'normal' fills along the angle, 'reverse' fills against it
+ * @param {string}   color         - Fill color (default '#ffffff')
  */
-export default function PixelCurtain({ onComplete, durationMs = 650, color = '#ffffff' }) {
+export default function PixelCurtain({
+  onComplete,
+  duration = 0.50,
+  size = 100,
+  angle = 90,
+  noise = 0.40,
+  directionMode = 'normal',
+  color = '#ffffff',
+}) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -24,32 +35,48 @@ export default function PixelCurtain({ onComplete, durationMs = 650, color = '#f
     const ctx = canvas.getContext('2d')
     ctx.fillStyle = color
 
-    const cols = Math.ceil(w / CELL_SIZE)
-    const rows = Math.ceil(h / CELL_SIZE)
-    const total = cols * rows
+    const cols = Math.ceil(w / size)
+    const rows = Math.ceil(h / size)
 
-    // Build cell coordinates then shuffle (Fisher-Yates)
-    const cells = Array.from({ length: total }, (_, i) => ({
-      x: (i % cols) * CELL_SIZE,
-      y: Math.floor(i / cols) * CELL_SIZE,
-    }))
+    // Direction vector from angle
+    const rad = (angle * Math.PI) / 180
+    const dx = Math.cos(rad)
+    const dy = Math.sin(rad)
 
-    for (let i = cells.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[cells[i], cells[j]] = [cells[j], cells[i]]
-    }
+    // Build cells with a combined directional + noise score
+    const cells = Array.from({ length: cols * rows }, (_, i) => {
+      const col = i % cols
+      const row = Math.floor(i / cols)
+
+      // Normalized center of each cell [0, 1]
+      const nx = (col + 0.5) / cols
+      const ny = (row + 0.5) / rows
+
+      // Project cell center onto the direction vector
+      const dirScore = nx * dx + ny * dy
+
+      const score = (1 - noise) * dirScore + noise * Math.random()
+
+      return { x: col * size, y: row * size, score }
+    })
+
+    cells.sort((a, b) =>
+      directionMode === 'reverse'
+        ? b.score - a.score
+        : a.score - b.score
+    )
 
     let rafId
     let lastFilled = 0
+    const durationMs = duration * 1000
     const start = performance.now()
 
     function frame(now) {
       const progress = Math.min((now - start) / durationMs, 1)
-      const filled = Math.floor(progress * total)
+      const filled = Math.floor(progress * cells.length)
 
-      // Only paint newly revealed cells each frame
       for (let i = lastFilled; i < filled; i++) {
-        ctx.fillRect(cells[i].x, cells[i].y, CELL_SIZE, CELL_SIZE)
+        ctx.fillRect(cells[i].x, cells[i].y, size, size)
       }
       lastFilled = filled
 
@@ -62,7 +89,7 @@ export default function PixelCurtain({ onComplete, durationMs = 650, color = '#f
 
     rafId = requestAnimationFrame(frame)
     return () => cancelAnimationFrame(rafId)
-  }, [onComplete, durationMs, color])
+  }, [onComplete, duration, size, angle, noise, directionMode, color])
 
   return (
     <canvas
