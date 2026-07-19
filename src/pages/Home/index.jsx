@@ -1,9 +1,9 @@
 import GridBackground from "../../components/GridBackground";
 
 const STATS = [
-  { value: "7+", label: "Lorem ipsum test text" },
-  { value: "6+", label: "Lorem ipsum test text" },
-  { value: "3+", label: "Lorem ipsum test text" },
+  { value: "3+", label: "Open Source Contributions" },
+  { value: "30+", label: "Unit Tests Contributed" },
+  { value: "AI", label: "Daily Workflow" },
 ];
 
 function MenuIcon() {
@@ -12,8 +12,8 @@ function MenuIcon() {
       aria-label="Open menu"
       className="flex flex-col gap-[7px] p-2 cursor-pointer"
     >
-      <span className="block w-7 h-[2px] bg-black" />
-      <span className="block w-7 h-[2px] bg-black" />
+      <span className="block w-7 h-[6px] bg-black" />
+      <span className="block w-7 h-[6px] bg-black" />
     </button>
   );
 }
