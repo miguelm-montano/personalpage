@@ -1,22 +1,11 @@
-import GridBackground from "../../components/GridBackground";
+import GridBackground from '../../components/GridBackground'
+import MenuIcon from '../../components/MenuIcon'
 
 const STATS = [
-  { value: "3+", label: "Open Source Contributions" },
-  { value: "30+", label: "Unit Tests Contributed" },
-  { value: "AI", label: "Daily Workflow" },
-];
-
-function MenuIcon() {
-  return (
-    <button
-      aria-label="Open menu"
-      className="flex flex-col gap-[7px] p-2 cursor-pointer"
-    >
-      <span className="block w-7 h-[6px] bg-black" />
-      <span className="block w-7 h-[6px] bg-black" />
-    </button>
-  );
-}
+  { value: '3+',  label: 'Open Source Contributions' },
+  { value: '30+', label: 'Unit Tests Contributed' },
+  { value: 'AI',  label: 'Daily Workflow' },
+]
 
 function StatItem({ value, label }) {
   return (
