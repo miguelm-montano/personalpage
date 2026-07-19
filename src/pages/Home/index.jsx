@@ -5,6 +5,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GridBackground from "../../components/GridBackground";
 import MenuIcon from "../../components/MenuIcon";
 import MenuPanel from "../../components/MenuPanel";
+import About from "../About";
+import Projects from "../Projects";
+import Experience from "../Experience";
+import Contact from "../Contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,10 +19,10 @@ const STATS = [
 ];
 
 const SECTIONS = [
-  { id: "about", bg: "#09B3C3" },
-  { id: "projects", bg: "#ffffff" },
-  { id: "experience", bg: "#ffffff" },
-  { id: "contact", bg: "#ffffff" },
+  { id: "about",      bg: "#09B3C3", Component: About      },
+  { id: "projects",   bg: "#ffffff", Component: Projects   },
+  { id: "experience", bg: "#ffffff", Component: Experience },
+  { id: "contact",    bg: "#ffffff", Component: Contact    },
 ];
 
 function StatItem({ value, label }) {
@@ -87,12 +91,14 @@ export default function Home() {
       </div>
 
       {/* ── Panels 2-5: sections that slide up over Home ── */}
-      {SECTIONS.map(({ id, bg }, i) => (
+      {SECTIONS.map(({ id, bg, Component }, i) => (
         <div
           key={id}
           className="scroll-panel relative h-screen"
           style={{ background: bg, zIndex: 2 + i }}
-        />
+        >
+          <Component />
+        </div>
       ))}
 
       {/* ── Menu curtain ── */}
