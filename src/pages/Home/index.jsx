@@ -1,4 +1,4 @@
-import GridBackground from '../../components/GridBackground'
+import GridBackground from "../../components/GridBackground";
 
 const STATS = [
   { value: "7+", label: "Lorem ipsum test text" },
@@ -27,7 +27,6 @@ function StatItem({ value, label }) {
   );
 }
 
-
 export default function Home() {
   return (
     <div className="relative h-screen bg-white overflow-hidden">
@@ -35,12 +34,9 @@ export default function Home() {
 
       {/* ── layout grid — above canvas ── */}
       <div className="relative z-10 h-full grid grid-cols-2 grid-rows-2">
-        {/* horizontal divider */}
-        <div className="absolute inset-x-0 top-1/2 h-px bg-neutral-200 pointer-events-none" />
-
         {/* LEFT COLUMN — spans both rows, content centered */}
-        <div className="row-span-2 border-r border-neutral-200 flex flex-col justify-center px-42">
-          <h1 className="font-unbounded font-black text-5xl uppercase leading-tight mb-5">
+        <div className="row-span-2 flex flex-col justify-center px-42">
+          <h1 className="font-unbounded font-black text-8xl uppercase leading-tight mb-5">
             Full Stack
             <br />
             Developer
