@@ -4,17 +4,16 @@ import { motion } from 'framer-motion'
 /**
  * Animated hamburger → X icon.
  *
- * Phase 1 (open):  top & bottom lines converge to center, middle fades out
+ * Phase 1 (open):  lines converge to center, middle fades out
  * Phase 2 (open):  lines spread into an X
  * Reverse on close.
  *
- * Uses an `idle` state to prevent playing the close animation on first render.
+ * `color` prop controls stroke color — animated via CSS `color` on the button
+ * so SVG paths inherit it through `stroke="currentColor"`.
  */
 
 const topVariants = {
-  idle: {
-    d: 'M25,35 L75,35',
-  },
+  idle: { d: 'M25,35 L75,35' },
   open: {
     d: ['M25,35 L75,35', 'M25,50 L75,50', 'M30,30 L70,70'],
     transition: { duration: 0.45, times: [0, 0.45, 1], ease: 'easeInOut' },
@@ -32,9 +31,7 @@ const middleVariants = {
 }
 
 const bottomVariants = {
-  idle: {
-    d: 'M25,65 L75,65',
-  },
+  idle: { d: 'M25,65 L75,65' },
   open: {
     d: ['M25,65 L75,65', 'M25,50 L75,50', 'M30,70 L70,30'],
     transition: { duration: 0.45, times: [0, 0.45, 1], ease: 'easeInOut' },
@@ -45,22 +42,25 @@ const bottomVariants = {
   },
 }
 
-const STROKE = { stroke: 'black', strokeWidth: '6', strokeLinecap: 'round', fill: 'none' }
+const STROKE = { stroke: 'currentColor', strokeWidth: '6', strokeLinecap: 'round', fill: 'none' }
 
-export default function MenuIcon({ onToggle }) {
+export default function MenuIcon({ onToggle, color = 'black' }) {
   const [state, setState] = useState('idle')
   const isOpen = state === 'open'
 
   function handleClick() {
-    setState((prev) => (prev === 'open' ? 'closed' : 'open'))
-    onToggle?.(!isOpen)
+    const next = state === 'open' ? 'closed' : 'open'
+    setState(next)
+    onToggle?.(next === 'open')
   }
 
   return (
-    <button
+    <motion.button
       onClick={handleClick}
       aria-label={isOpen ? 'Close menu' : 'Open menu'}
       aria-expanded={isOpen}
+      animate={{ color }}
+      transition={{ duration: 0.3 }}
       className="p-2 cursor-pointer bg-transparent border-none outline-none"
     >
       <svg width="32" height="32" viewBox="0 0 100 100">
@@ -68,6 +68,6 @@ export default function MenuIcon({ onToggle }) {
         <motion.path variants={middleVariants} initial="idle" animate={state} {...STROKE} d="M25,50 L75,50" />
         <motion.path variants={bottomVariants} initial="idle" animate={state} {...STROKE} />
       </svg>
-    </button>
+    </motion.button>
   )
 }
