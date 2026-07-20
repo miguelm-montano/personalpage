@@ -15,3 +15,38 @@ body {
   margin: 0;
   background: #000;
 }
+
+/* Project title — outline text that fills left-to-right on hover */
+.project-title {
+  position: relative;
+  display: inline-block;
+  color: #C3C3C3;
+}
+
+.project-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+  white-space: pre;
+  word-break: normal;
+  color: #fb8500;
+  transition: width 0.7s cubic-bezier(0.39, 0.13, 0.55, 0.88);
+  will-change: width;
+}
+
+.project-title:hover::after {
+  width: 100%;
+}
+
+/* Dim all siblings when one project is hovered */
+.projects-list:hover .project-item {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.projects-list .project-item:hover {
+  opacity: 1;
+}
