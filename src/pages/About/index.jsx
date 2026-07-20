@@ -1,15 +1,15 @@
-import { motion } from 'framer-motion'
-import PageLayout from '../../components/PageLayout'
+import { motion } from "framer-motion";
+import PageLayout from "../../components/PageLayout";
 
 const container = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15 } },
-}
+};
 
 const item = {
-  hidden:  { opacity: 0, y: 36 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
-}
+  hidden: { opacity: 0, y: 36 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
 
 export default function About() {
   return (
@@ -34,7 +34,7 @@ export default function About() {
         >
           I build digital products by combining an industrial design mindset
           with full-stack engineering, always starting from the problem, the
-          user, and the long-term maintainability of the solution.
+          user, and the long-term maintainability of the solution
         </motion.p>
 
         <motion.div className="border-t border-white mb-12" variants={item} />
@@ -44,10 +44,10 @@ export default function About() {
           variants={item}
         >
           Before becoming a developer, I studied Industrial Design, where I
-          learned to approach every challenge from the user's perspective. That
-          way of thinking naturally evolved into software development, where I
-          now build full-stack applications with Laravel, React, TypeScript and
-          modern development tools.
+          learned to approach every challenge from the user's perspective.
+          Today, I apply that same mindset to software engineering, building
+          digital products that balance user needs, technical quality and
+          long-term maintainability.
         </motion.p>
 
         <motion.p
@@ -61,5 +61,5 @@ export default function About() {
         </motion.p>
       </motion.div>
     </PageLayout>
-  )
+  );
 }
