@@ -21,8 +21,8 @@ function ProjectItem({ name, techs, divider }) {
   return (
     <div>
       <h3
-        className="font-unbounded font-bold text-5xl mb-3"
-        style={{ color: "#C3C3C3" }}
+        className="project-title font-unbounded font-bold text-5xl mb-3"
+        data-text={name}
       >
         {name}
       </h3>
