@@ -40,3 +40,13 @@ body {
 .project-title:hover::after {
   width: 100%;
 }
+
+/* Dim all siblings when one project is hovered */
+.projects-list:hover .project-item {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.projects-list .project-item:hover {
+  opacity: 1;
+}

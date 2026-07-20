@@ -19,7 +19,7 @@ function SectionLabel({ children }) {
 
 function ProjectItem({ name, techs, divider }) {
   return (
-    <div>
+    <div className="project-item">
       <h3
         className="project-title font-unbounded font-bold text-5xl mb-3"
         data-text={name}
@@ -48,7 +48,7 @@ export default function Projects() {
       </div>
 
       {/* ── White inner box ── */}
-      <div className="flex-1 bg-white my-10 mr-18 px-46 py-12 overflow-y-auto flex flex-col justify-center">
+      <div className="projects-list flex-1 bg-white my-10 mr-18 px-46 py-12 overflow-y-auto flex flex-col justify-center">
         <SectionLabel>selected projects</SectionLabel>
         {SELECTED.map((p, i) => (
           <ProjectItem key={p.name} {...p} divider={i < SELECTED.length - 1} />
