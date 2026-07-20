@@ -20,15 +20,17 @@ function SectionLabel({ children }) {
 function ProjectItem({ name, techs, divider }) {
   return (
     <div className="project-item">
-      <h3
-        className="project-title font-unbounded font-bold text-5xl mb-3"
-        data-text={name}
-      >
-        {name}
-      </h3>
-      <p className="font-open-sans text-sm text-neutral-700 mb-5">
-        {techs.join(" · ")}
-      </p>
+      <div className="block cursor-pointer">
+        <h3
+          className="project-title font-unbounded font-bold text-5xl mb-3"
+          data-text={name}
+        >
+          {name}
+        </h3>
+        <p className="font-open-sans text-sm text-neutral-700 mb-5">
+          {techs.join(" · ")}
+        </p>
+      </div>
       {divider && <div className="border-t border-[#FFB703] mb-5" />}
     </div>
   );
