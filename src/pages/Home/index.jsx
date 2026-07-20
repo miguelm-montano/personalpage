@@ -20,7 +20,7 @@ const STATS = [
 
 const SECTIONS = [
   { id: "about",      bg: "#09B3C3", Component: About      },
-  { id: "projects",   bg: "#ffffff", Component: Projects   },
+  { id: "projects",   bg: "#FFB703", Component: Projects   },
   { id: "experience", bg: "#ffffff", Component: Experience },
   { id: "contact",    bg: "#ffffff", Component: Contact    },
 ];
