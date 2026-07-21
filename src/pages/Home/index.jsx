@@ -70,16 +70,15 @@ export default function Home() {
 
         <div className="relative z-10 h-full grid grid-cols-2 grid-rows-2 mt-5">
           <div className="row-span-2 flex flex-col justify-center px-28">
-            <h1 className="font-unbounded font-black text-8xl uppercase leading-none mb-5">
+            <p className="font-unbounded font-light text-base mb-4 ml-1">
+              Miguel Montaño
+            </p>
+            <h1 className="font-unbounded font-black text-8xl uppercase leading-none mb-36">
               Full Stack
               <br />
               Developer
             </h1>
-            <p className="font-open-sans text-base text-neutral-600 max-w-xs leading-relaxed mb-10">
-              Hi! I'm Miguel. I'm a full-stack developer with a background in
-              industrial design, specializing in problem-solving and creative
-              solutions
-            </p>
+
             <button className="font-unbounded font-light text-sm bg-black text-white rounded-full px-8 py-4 w-fit">
               Let's Talk!
             </button>
