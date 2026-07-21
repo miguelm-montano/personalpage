@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import homeBg from "../../assets/home-background.svg";
 import GridBackground from "../../components/GridBackground";
 import MenuIcon from "../../components/MenuIcon";
 import MenuPanel from "../../components/MenuPanel";
@@ -19,10 +20,10 @@ const STATS = [
 ];
 
 const SECTIONS = [
-  { id: "about",      bg: "#09B3C3", Component: About      },
-  { id: "projects",   bg: "#FFB703", Component: Projects   },
+  { id: "about", bg: "#09B3C3", Component: About },
+  { id: "projects", bg: "#FFB703", Component: Projects },
   { id: "experience", bg: "#ffffff", Component: Experience },
-  { id: "contact",    bg: "#ffffff", Component: Contact    },
+  { id: "contact", bg: "#ffffff", Component: Contact },
 ];
 
 function StatItem({ value, label }) {
@@ -58,23 +59,26 @@ export default function Home() {
     <>
       {/* ── Panel 1: Home — untouched ── */}
       <div
-        className="scroll-panel relative h-screen bg-white"
+        className="scroll-panel relative h-screen bg-white overflow-hidden"
         style={{ zIndex: 1 }}
       >
-        {/* <GridBackground />*/}
+        <img
+          src={homeBg}
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-        <div className="relative z-10 h-full grid grid-cols-2 grid-rows-2">
+        <div className="relative z-10 h-full grid grid-cols-2 grid-rows-2 mt-5">
           <div className="row-span-2 flex flex-col justify-center px-28">
-            <h1 className="font-unbounded font-black text-8xl uppercase leading-tight mb-5">
+            <p className="font-unbounded font-light text-base mb-4 ml-1">
+              Miguel Montaño
+            </p>
+            <h1 className="font-unbounded font-black text-8xl uppercase leading-none mb-36">
               Full Stack
               <br />
               Developer
             </h1>
-            <p className="font-open-sans text-base text-neutral-600 max-w-xs leading-relaxed mb-10">
-              Hi! I'm Miguel. I'm a full-stack developer with a background in
-              industrial design, specializing in problem-solving and creative
-              solutions
-            </p>
+
             <button className="font-unbounded font-light text-sm bg-black text-white rounded-full px-8 py-4 w-fit">
               Let's Talk!
             </button>
@@ -82,11 +86,11 @@ export default function Home() {
 
           <div />
 
-          <div className="flex flex-col items-end justify-end gap-8 px-16 pb-16">
+          {/*<div className="flex flex-col items-end justify-end gap-8 px-16 pb-16">
             {STATS.map((stat) => (
               <StatItem key={stat.value} {...stat} />
             ))}
-          </div>
+          </div>*/}
         </div>
       </div>
 
