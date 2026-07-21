@@ -4,10 +4,10 @@ const SELECTED = [
 ];
 
 const OPEN_SOURCE = [
-  { name: "OpenEMR", techs: ["REST Api", "Laravel", "OAuth 2"] },
-  { name: "LinkForge", techs: ["REST Api", "Laravel", "OAuth 2"] },
-  { name: "Vue-Pokedex", techs: ["React", "Tailwind CSS", "Docker"] },
-  { name: "USCM", techs: ["React", "Tailwind CSS", "Docker"] },
+  { name: "OpenEMR", techs: ["PHP 8.2+", "PHPStan", "REST API Testing"] },
+  { name: "LinkForge", techs: ["PHP", "Laravel", "PHPUnit"] },
+  { name: "Vue-Pokedex", techs: ["Vue 3", "Pinia", "TypeScript"] },
+  { name: "USCM", techs: ["PHP", "JavaScript", "HTML"] },
 ];
 
 function SectionLabel({ children }) {
