@@ -5,6 +5,7 @@ const SELECTED = [
 
 const OPEN_SOURCE = [
   { name: "OpenEMR", techs: ["REST Api", "Laravel", "OAuth 2"] },
+  { name: "LinkForge", techs: ["REST Api", "Laravel", "OAuth 2"] },
   { name: "Vue-Pokedex", techs: ["React", "Tailwind CSS", "Docker"] },
   { name: "USCM", techs: ["React", "Tailwind CSS", "Docker"] },
 ];
