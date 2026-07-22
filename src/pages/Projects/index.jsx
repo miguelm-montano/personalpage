@@ -8,16 +8,16 @@ const SELECTED = [
     techs: ["REST Api", "Laravel", "OAuth 2"],
     description:
       "RESTful API for managing design assets organized in folders. All protected endpoints require a Bearer token obtained via POST /api/v1/login.",
-    url: "#",
-    github: "#",
+    url: "https://nodefold-api.onrender.com/docs",
+    github: "https://github.com/miguelm-montano/nodefold-api",
   },
   {
     name: "Nodefold - Front",
     techs: ["React", "Tailwind CSS", "Docker"],
     description:
       "Frontend application for the Nodefold platform. Built with React and Tailwind CSS, containerized with Docker for consistent deployments.",
-    url: "#",
-    github: "#",
+    url: "https://nodefold.vercel.app",
+    github: "https://github.com/miguelm-montano/nodefold-front",
   },
 ];
 
@@ -27,32 +27,33 @@ const OPEN_SOURCE = [
     techs: ["PHP 8.2+", "PHPStan", "REST API Testing"],
     description:
       "Contributions to OpenEMR, an open-source electronic health records and medical practice management solution.",
-    url: "#",
-    github: "#",
+    url: "https://www.open-emr.org",
+    github: "https://github.com/openemr/openemr/pull/12419",
   },
   {
     name: "LinkForge",
     techs: ["PHP", "Laravel", "PHPUnit"],
     description:
       "A Laravel-based link management system with comprehensive test coverage using PHPUnit.",
-    url: "#",
-    github: "#",
+    url: "https://linkforge.store",
+    github: "https://github.com/sanmaxdev/linkforge/pull/22",
   },
   {
     name: "Vue-Pokedex",
     techs: ["Vue 3", "Pinia", "TypeScript"],
     description:
       "A modern Pokédex built with Vue 3, Pinia for state management, and TypeScript for type safety.",
-    url: "#",
-    github: "#",
+    url: "https://github.com/JohannesL2/vue-pokedex",
+    github:
+      "https://github.com/JohannesL2/vue-pokedex/pull/12#event-27299836335",
   },
   {
     name: "USCM",
     techs: ["PHP", "JavaScript", "HTML"],
     description:
       "User and content management system built with PHP and vanilla JavaScript.",
-    url: "#",
-    github: "#",
+    url: "https://www.uscm.se/skynet/",
+    github: "https://github.com/USCM-RPG/USCM/pull/72",
   },
 ];
 

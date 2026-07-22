@@ -23,6 +23,8 @@ export default function PreviewCard({ project }) {
         <div className="flex gap-3">
           <a
             href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 bg-black text-white font-open-sans text-sm px-5 py-2 rounded-full"
           >
             <svg
@@ -40,6 +42,8 @@ export default function PreviewCard({ project }) {
           </a>
           <a
             href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 bg-black text-white font-open-sans text-sm px-5 py-2 rounded-full"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
