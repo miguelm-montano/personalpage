@@ -2,10 +2,10 @@ export default function PreviewCard({ project }) {
   return (
     <div className="relative">
       {/* Back card — stacked shadow effect */}
-      <div className="absolute inset-0 border border-black bg-white translate-x-3 translate-y-3" />
+      <div className="absolute inset-0 border-4 border-black bg-white translate-x-3 translate-y-3" />
 
       {/* Front card */}
-      <div className="relative border border-black bg-white p-5">
+      <div className="relative border-4 border-black bg-white p-5">
         {/* Image placeholder */}
         <div className="w-full aspect-video bg-neutral-200 mb-5" />
 
@@ -25,7 +25,14 @@ export default function PreviewCard({ project }) {
             href={project.url}
             className="flex items-center gap-2 bg-black text-white font-open-sans text-sm px-5 py-2 rounded-full"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <circle cx="12" cy="12" r="10" />
               <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg>
