@@ -2,7 +2,7 @@ export default function PreviewCard({ project }) {
   return (
     <div className="relative">
       {/* Back card — stacked shadow effect */}
-      <div className="absolute inset-0 border-4 border-black bg-white translate-x-3 translate-y-3" />
+      <div className="absolute inset-0 border-4 border-black bg-white translate-x-4 translate-y-4" />
 
       {/* Front card */}
       <div className="relative border-4 border-black bg-white p-5">

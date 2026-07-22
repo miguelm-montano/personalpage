@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PreviewCard from "../../components/PreviewCard";
 
@@ -81,6 +81,14 @@ function ProjectItem({ project, divider, onHover, onLeave }) {
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState(null); // { project, top }
+  const containerRef = useRef(null);
+
+  function handleHover(project, top) {
+    const containerHeight = containerRef.current?.clientHeight ?? 600;
+    const CARD_HEIGHT = 420; // approximate card height in px
+    const clampedTop = Math.min(top, containerHeight - CARD_HEIGHT);
+    setActiveProject({ project, top: Math.max(0, clampedTop) });
+  }
 
 
   return (
@@ -96,7 +104,7 @@ export default function Projects() {
       </div>
 
       {/* ── Content ── */}
-      <div className="relative flex-1 flex items-center px-46 py-12">
+      <div ref={containerRef} className="relative flex-1 flex items-center px-46 py-12">
 
         {/* Project list — full width */}
         <div className="projects-list w-full">
@@ -106,7 +114,7 @@ export default function Projects() {
               key={p.name}
               project={p}
               divider={i < SELECTED.length - 1}
-              onHover={(project, top) => setActiveProject({ project, top })}
+              onHover={handleHover}
               onLeave={() => setActiveProject(null)}
             />
           ))}
@@ -119,7 +127,7 @@ export default function Projects() {
               key={p.name}
               project={p}
               divider={i < OPEN_SOURCE.length - 1}
-              onHover={(project, top) => setActiveProject({ project, top })}
+              onHover={handleHover}
               onLeave={() => setActiveProject(null)}
             />
           ))}
