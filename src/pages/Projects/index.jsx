@@ -94,11 +94,11 @@ export default function Projects() {
         </span>
       </div>
 
-      {/* ── Two-column content ── */}
-      <div className="flex-1 flex items-center gap-10 px-16 py-12 mr-8">
+      {/* ── Content ── */}
+      <div className="relative flex-1 flex items-center px-46 py-12">
 
-        {/* Project list */}
-        <div className="projects-list flex-1">
+        {/* Project list — full width */}
+        <div className="projects-list w-full">
           <SectionLabel>selected projects</SectionLabel>
           {SELECTED.map((p, i) => (
             <ProjectItem
@@ -124,8 +124,8 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Preview panel */}
-        <div className="w-80 shrink-0">
+        {/* Preview panel — absolute, overlays the list on the right */}
+        <div className="absolute right-16 top-1/2 -translate-y-1/2 w-80 z-10">
           <AnimatePresence mode="wait">
             {activeProject && (
               <motion.div
