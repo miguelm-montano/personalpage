@@ -39,19 +39,19 @@ function ProjectItem({ name, techs, divider }) {
 
 export default function Projects() {
   return (
-    <div className="h-full bg-[#FFB703] flex">
-      {/* ── Left yellow strip — vertical email ── */}
+    <div className="h-full bg-white flex">
+      {/* ── Left strip — vertical email ── */}
       <div className="w-14 shrink-0 flex items-end justify-center pb-10">
         <span
-          className="font-open-sans text-xs text-white tracking-widest whitespace-nowrap"
+          className="font-open-sans text-xs text-neutral-400 tracking-widest whitespace-nowrap"
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
           migmontm@gmail.com
         </span>
       </div>
 
-      {/* ── White inner box ── */}
-      <div className="projects-list flex-1 bg-white my-10 mr-18 px-46 py-12 overflow-y-auto flex flex-col justify-center">
+      {/* ── Content ── */}
+      <div className="projects-list flex-1 px-46 py-12 overflow-y-auto flex flex-col justify-center">
         <SectionLabel>selected projects</SectionLabel>
         {SELECTED.map((p, i) => (
           <ProjectItem key={p.name} {...p} divider={i < SELECTED.length - 1} />
