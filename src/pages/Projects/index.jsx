@@ -1,13 +1,49 @@
 const SELECTED = [
-  { name: "Nodefold - API", techs: ["REST Api", "Laravel", "OAuth 2"] },
-  { name: "Nodefold - Front", techs: ["React", "Tailwind CSS", "Docker"] },
+  {
+    name: "Nodefold - API",
+    techs: ["REST Api", "Laravel", "OAuth 2"],
+    description: "RESTful API for managing design assets organized in folders. All protected endpoints require a Bearer token obtained via POST /api/v1/login.",
+    url: "#",
+    github: "#",
+  },
+  {
+    name: "Nodefold - Front",
+    techs: ["React", "Tailwind CSS", "Docker"],
+    description: "Frontend application for the Nodefold platform. Built with React and Tailwind CSS, containerized with Docker for consistent deployments.",
+    url: "#",
+    github: "#",
+  },
 ];
 
 const OPEN_SOURCE = [
-  { name: "OpenEMR", techs: ["PHP 8.2+", "PHPStan", "REST API Testing"] },
-  { name: "LinkForge", techs: ["PHP", "Laravel", "PHPUnit"] },
-  { name: "Vue-Pokedex", techs: ["Vue 3", "Pinia", "TypeScript"] },
-  { name: "USCM", techs: ["PHP", "JavaScript", "HTML"] },
+  {
+    name: "OpenEMR",
+    techs: ["PHP 8.2+", "PHPStan", "REST API Testing"],
+    description: "Contributions to OpenEMR, an open-source electronic health records and medical practice management solution.",
+    url: "#",
+    github: "#",
+  },
+  {
+    name: "LinkForge",
+    techs: ["PHP", "Laravel", "PHPUnit"],
+    description: "A Laravel-based link management system with comprehensive test coverage using PHPUnit.",
+    url: "#",
+    github: "#",
+  },
+  {
+    name: "Vue-Pokedex",
+    techs: ["Vue 3", "Pinia", "TypeScript"],
+    description: "A modern Pokédex built with Vue 3, Pinia for state management, and TypeScript for type safety.",
+    url: "#",
+    github: "#",
+  },
+  {
+    name: "USCM",
+    techs: ["PHP", "JavaScript", "HTML"],
+    description: "User and content management system built with PHP and vanilla JavaScript.",
+    url: "#",
+    github: "#",
+  },
 ];
 
 function SectionLabel({ children }) {
