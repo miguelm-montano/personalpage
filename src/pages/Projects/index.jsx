@@ -62,7 +62,7 @@ function ProjectItem({ project, divider, onHover, onLeave }) {
   return (
     <div
       className="project-item"
-      onMouseEnter={() => onHover(project)}
+      onMouseEnter={(e) => onHover(project, e.currentTarget.offsetTop)}
       onMouseLeave={onLeave}
     >
       <h3
@@ -80,7 +80,8 @@ function ProjectItem({ project, divider, onHover, onLeave }) {
 }
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState(null); // { project, top }
+
 
   return (
     <div className="h-full bg-white flex">
@@ -105,7 +106,7 @@ export default function Projects() {
               key={p.name}
               project={p}
               divider={i < SELECTED.length - 1}
-              onHover={setActiveProject}
+              onHover={(project, top) => setActiveProject({ project, top })}
               onLeave={() => setActiveProject(null)}
             />
           ))}
@@ -118,28 +119,28 @@ export default function Projects() {
               key={p.name}
               project={p}
               divider={i < OPEN_SOURCE.length - 1}
-              onHover={setActiveProject}
+              onHover={(project, top) => setActiveProject({ project, top })}
               onLeave={() => setActiveProject(null)}
             />
           ))}
         </div>
 
-        {/* Preview panel — absolute, overlays the list on the right */}
-        <div className="absolute right-16 top-1/2 -translate-y-1/2 w-80 z-10">
-          <AnimatePresence mode="wait">
-            {activeProject && (
-              <motion.div
-                key={activeProject.name}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 12 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-              >
-                <PreviewCard project={activeProject} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        {/* Preview panel — tracks vertical position of hovered project */}
+        <AnimatePresence mode="wait">
+          {activeProject && (
+            <motion.div
+              key={activeProject.project.name}
+              className="absolute right-16 w-80 z-10"
+              style={{ top: activeProject.top }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <PreviewCard project={activeProject.project} />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>
