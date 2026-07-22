@@ -66,14 +66,12 @@ function SectionLabel({ children }) {
 
 function ProjectItem({ project, divider, onHover, onLeave }) {
   return (
-    <div
-      className="project-item"
-      onMouseEnter={(e) => onHover(project, e.currentTarget.offsetTop)}
-      onMouseLeave={onLeave}
-    >
+    <div className="project-item">
       <h3
         className="project-title font-unbounded font-bold text-5xl mb-3 cursor-default"
         data-text={project.name}
+        onMouseEnter={(e) => onHover(project, e.currentTarget.offsetTop)}
+        onMouseLeave={onLeave}
       >
         {project.name}
       </h3>
