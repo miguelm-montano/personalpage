@@ -84,12 +84,23 @@ function ProjectItem({ project, divider, onHover, onLeave }) {
 }
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(null); // { project, top }
+  const [activeProject, setActiveProject] = useState(null);
   const containerRef = useRef(null);
+  const hideTimeout = useRef(null);
+
+  function cancelHide() {
+    clearTimeout(hideTimeout.current);
+  }
+
+  function scheduleHide() {
+    cancelHide();
+    hideTimeout.current = setTimeout(() => setActiveProject(null), 300);
+  }
 
   function handleHover(project, top) {
+    cancelHide();
     const containerHeight = containerRef.current?.clientHeight ?? 600;
-    const CARD_HEIGHT = 650; // approximate card height in px
+    const CARD_HEIGHT = 650;
     const clampedTop = Math.min(top, containerHeight - CARD_HEIGHT);
     setActiveProject({ project, top: Math.max(0, clampedTop) });
   }
@@ -120,7 +131,7 @@ export default function Projects() {
               project={p}
               divider={i < SELECTED.length - 1}
               onHover={handleHover}
-              onLeave={() => setActiveProject(null)}
+              onLeave={scheduleHide}
             />
           ))}
 
@@ -133,7 +144,7 @@ export default function Projects() {
               project={p}
               divider={i < OPEN_SOURCE.length - 1}
               onHover={handleHover}
-              onLeave={() => setActiveProject(null)}
+              onLeave={scheduleHide}
             />
           ))}
         </div>
@@ -149,6 +160,8 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
+              onMouseEnter={cancelHide}
+              onMouseLeave={scheduleHide}
             >
               <PreviewCard project={activeProject.project} />
             </motion.div>
