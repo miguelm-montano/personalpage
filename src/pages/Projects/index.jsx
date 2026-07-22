@@ -6,14 +6,16 @@ const SELECTED = [
   {
     name: "Nodefold - API",
     techs: ["REST Api", "Laravel", "OAuth 2"],
-    description: "RESTful API for managing design assets organized in folders. All protected endpoints require a Bearer token obtained via POST /api/v1/login.",
+    description:
+      "RESTful API for managing design assets organized in folders. All protected endpoints require a Bearer token obtained via POST /api/v1/login.",
     url: "#",
     github: "#",
   },
   {
     name: "Nodefold - Front",
     techs: ["React", "Tailwind CSS", "Docker"],
-    description: "Frontend application for the Nodefold platform. Built with React and Tailwind CSS, containerized with Docker for consistent deployments.",
+    description:
+      "Frontend application for the Nodefold platform. Built with React and Tailwind CSS, containerized with Docker for consistent deployments.",
     url: "#",
     github: "#",
   },
@@ -23,28 +25,32 @@ const OPEN_SOURCE = [
   {
     name: "OpenEMR",
     techs: ["PHP 8.2+", "PHPStan", "REST API Testing"],
-    description: "Contributions to OpenEMR, an open-source electronic health records and medical practice management solution.",
+    description:
+      "Contributions to OpenEMR, an open-source electronic health records and medical practice management solution.",
     url: "#",
     github: "#",
   },
   {
     name: "LinkForge",
     techs: ["PHP", "Laravel", "PHPUnit"],
-    description: "A Laravel-based link management system with comprehensive test coverage using PHPUnit.",
+    description:
+      "A Laravel-based link management system with comprehensive test coverage using PHPUnit.",
     url: "#",
     github: "#",
   },
   {
     name: "Vue-Pokedex",
     techs: ["Vue 3", "Pinia", "TypeScript"],
-    description: "A modern Pokédex built with Vue 3, Pinia for state management, and TypeScript for type safety.",
+    description:
+      "A modern Pokédex built with Vue 3, Pinia for state management, and TypeScript for type safety.",
     url: "#",
     github: "#",
   },
   {
     name: "USCM",
     techs: ["PHP", "JavaScript", "HTML"],
-    description: "User and content management system built with PHP and vanilla JavaScript.",
+    description:
+      "User and content management system built with PHP and vanilla JavaScript.",
     url: "#",
     github: "#",
   },
@@ -85,11 +91,10 @@ export default function Projects() {
 
   function handleHover(project, top) {
     const containerHeight = containerRef.current?.clientHeight ?? 600;
-    const CARD_HEIGHT = 420; // approximate card height in px
+    const CARD_HEIGHT = 650; // approximate card height in px
     const clampedTop = Math.min(top, containerHeight - CARD_HEIGHT);
     setActiveProject({ project, top: Math.max(0, clampedTop) });
   }
-
 
   return (
     <div className="h-full bg-white flex">
@@ -104,8 +109,10 @@ export default function Projects() {
       </div>
 
       {/* ── Content ── */}
-      <div ref={containerRef} className="relative flex-1 flex items-center px-46 py-12">
-
+      <div
+        ref={containerRef}
+        className="relative flex-1 flex items-center px-46 py-12"
+      >
         {/* Project list — full width */}
         <div className="projects-list w-full">
           <SectionLabel>selected projects</SectionLabel>
@@ -138,7 +145,7 @@ export default function Projects() {
           {activeProject && (
             <motion.div
               key={activeProject.project.name}
-              className="absolute left-[55%] w-80 z-10"
+              className="absolute left-[50%] w-[34rem] z-10"
               style={{ top: activeProject.top }}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -149,7 +156,6 @@ export default function Projects() {
             </motion.div>
           )}
         </AnimatePresence>
-
       </div>
     </div>
   );
