@@ -50,23 +50,31 @@ export default function Projects() {
         </span>
       </div>
 
-      {/* ── Content ── */}
-      <div className="projects-list flex-1 px-46 py-12 overflow-y-auto flex flex-col justify-center">
-        <SectionLabel>selected projects</SectionLabel>
-        {SELECTED.map((p, i) => (
-          <ProjectItem key={p.name} {...p} divider={i < SELECTED.length - 1} />
-        ))}
+      {/* ── Two-column content ── */}
+      <div className="flex-1 flex items-center gap-10 px-16 py-12 mr-8">
 
-        <div className="mt-6 mb-2">
-          <SectionLabel>open source projects</SectionLabel>
+        {/* Project list */}
+        <div className="projects-list flex-1">
+          <SectionLabel>selected projects</SectionLabel>
+          {SELECTED.map((p, i) => (
+            <ProjectItem key={p.name} {...p} divider={i < SELECTED.length - 1} />
+          ))}
+
+          <div className="mt-6 mb-2">
+            <SectionLabel>open source projects</SectionLabel>
+          </div>
+          {OPEN_SOURCE.map((p, i) => (
+            <ProjectItem
+              key={p.name}
+              {...p}
+              divider={i < OPEN_SOURCE.length - 1}
+            />
+          ))}
         </div>
-        {OPEN_SOURCE.map((p, i) => (
-          <ProjectItem
-            key={p.name}
-            {...p}
-            divider={i < OPEN_SOURCE.length - 1}
-          />
-        ))}
+
+        {/* Preview panel — placeholder for now */}
+        <div className="w-80 shrink-0" />
+
       </div>
     </div>
   );
