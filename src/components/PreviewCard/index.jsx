@@ -6,8 +6,11 @@ export default function PreviewCard({ project }) {
 
       {/* Front card */}
       <div className="relative border-4 border-black bg-white p-5">
-        {/* Image placeholder */}
-        <div className="w-full aspect-video bg-neutral-200 mb-5" />
+        {/* Image */}
+        {project.image
+          ? <img src={project.image} alt={project.name} className="w-full aspect-video object-cover mb-5" />
+          : <div className="w-full aspect-video bg-neutral-200 mb-5" />
+        }
 
         {/* Title */}
         <h3 className="font-unbounded font-bold text-base text-[#fb8500] mb-2">

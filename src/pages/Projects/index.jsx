@@ -1,6 +1,12 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PreviewCard from "../../components/PreviewCard";
+import nodefoldApiImg from "../../assets/nodefold-api.webp";
+import nodefoldFrontImg from "../../assets/nodefold-front.webp";
+import openEmrImg from "../../assets/open-emr.webp";
+import linkForgeImg from "../../assets/link-forge.webp";
+import vuePokedexImg from "../../assets/vue-pokedex.webp";
+import uscmImg from "../../assets/uscm.webp";
 
 const SELECTED = [
   {
@@ -10,6 +16,7 @@ const SELECTED = [
       "RESTful API for managing design assets organized in folders. All protected endpoints require a Bearer token obtained via POST /api/v1/login.",
     url: "https://nodefold-api.onrender.com/docs",
     github: "https://github.com/miguelm-montano/nodefold-api",
+    image: nodefoldApiImg,
   },
   {
     name: "Nodefold - Front",
@@ -18,6 +25,7 @@ const SELECTED = [
       "Frontend application for the Nodefold platform. Built with React and Tailwind CSS, containerized with Docker for consistent deployments.",
     url: "https://nodefold.vercel.app",
     github: "https://github.com/miguelm-montano/nodefold-front",
+    image: nodefoldFrontImg,
   },
 ];
 
@@ -29,6 +37,7 @@ const OPEN_SOURCE = [
       "Contributions to OpenEMR, an open-source electronic health records and medical practice management solution.",
     url: "https://www.open-emr.org",
     github: "https://github.com/openemr/openemr/pull/12419",
+    image: openEmrImg,
   },
   {
     name: "LinkForge",
@@ -37,6 +46,7 @@ const OPEN_SOURCE = [
       "A Laravel-based link management system with comprehensive test coverage using PHPUnit.",
     url: "https://linkforge.store",
     github: "https://github.com/sanmaxdev/linkforge/pull/22",
+    image: linkForgeImg,
   },
   {
     name: "Vue-Pokedex",
@@ -46,6 +56,7 @@ const OPEN_SOURCE = [
     url: "https://github.com/JohannesL2/vue-pokedex",
     github:
       "https://github.com/JohannesL2/vue-pokedex/pull/12#event-27299836335",
+    image: vuePokedexImg,
   },
   {
     name: "USCM",
@@ -54,6 +65,7 @@ const OPEN_SOURCE = [
       "User and content management system built with PHP and vanilla JavaScript.",
     url: "https://www.uscm.se/skynet/",
     github: "https://github.com/USCM-RPG/USCM/pull/72",
+    image: uscmImg,
   },
 ];
 
