@@ -130,7 +130,7 @@ export default function Projects() {
           {activeProject && (
             <motion.div
               key={activeProject.project.name}
-              className="absolute right-16 w-80 z-10"
+              className="absolute left-[55%] w-80 z-10"
               style={{ top: activeProject.top }}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
