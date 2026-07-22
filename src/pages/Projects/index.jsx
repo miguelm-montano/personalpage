@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import PreviewCard from "../../components/PreviewCard";
+
 const SELECTED = [
   {
     name: "Nodefold - API",
@@ -54,26 +58,30 @@ function SectionLabel({ children }) {
   );
 }
 
-function ProjectItem({ name, techs, divider }) {
+function ProjectItem({ project, divider, onHover, onLeave }) {
   return (
-    <div className="project-item">
-      <div className="block cursor-pointer">
-        <h3
-          className="project-title font-unbounded font-bold text-5xl mb-3"
-          data-text={name}
-        >
-          {name}
-        </h3>
-        <p className="font-open-sans text-sm text-neutral-700 mb-5">
-          {techs.join(" · ")}
-        </p>
-      </div>
+    <div
+      className="project-item"
+      onMouseEnter={() => onHover(project)}
+      onMouseLeave={onLeave}
+    >
+      <h3
+        className="project-title font-unbounded font-bold text-5xl mb-3 cursor-default"
+        data-text={project.name}
+      >
+        {project.name}
+      </h3>
+      <p className="font-open-sans text-sm text-neutral-700 mb-5">
+        {project.techs.join(" · ")}
+      </p>
       {divider && <div className="border-t border-[#FFB703] mb-5" />}
     </div>
   );
 }
 
 export default function Projects() {
+  const [activeProject, setActiveProject] = useState(null);
+
   return (
     <div className="h-full bg-white flex">
       {/* ── Left strip — vertical email ── */}
@@ -93,7 +101,13 @@ export default function Projects() {
         <div className="projects-list flex-1">
           <SectionLabel>selected projects</SectionLabel>
           {SELECTED.map((p, i) => (
-            <ProjectItem key={p.name} {...p} divider={i < SELECTED.length - 1} />
+            <ProjectItem
+              key={p.name}
+              project={p}
+              divider={i < SELECTED.length - 1}
+              onHover={setActiveProject}
+              onLeave={() => setActiveProject(null)}
+            />
           ))}
 
           <div className="mt-6 mb-2">
@@ -102,14 +116,30 @@ export default function Projects() {
           {OPEN_SOURCE.map((p, i) => (
             <ProjectItem
               key={p.name}
-              {...p}
+              project={p}
               divider={i < OPEN_SOURCE.length - 1}
+              onHover={setActiveProject}
+              onLeave={() => setActiveProject(null)}
             />
           ))}
         </div>
 
-        {/* Preview panel — placeholder for now */}
-        <div className="w-80 shrink-0" />
+        {/* Preview panel */}
+        <div className="w-80 shrink-0">
+          <AnimatePresence mode="wait">
+            {activeProject && (
+              <motion.div
+                key={activeProject.name}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                <PreviewCard project={activeProject} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
       </div>
     </div>
